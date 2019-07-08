@@ -16,7 +16,8 @@
         self.name = data[@"name"];
         self.dateCreated = [PutIOAPIObject dateFromRawDataString:data[@"created_at"]];
         self.contentType = data[@"content_type"];
-        self.iconURL = [NSURL URLWithString:data[@"icon"]];
+		if(data[@"icon"] != [NSNull null])
+        	self.iconURL = [NSURL URLWithString:data[@"icon"]];
         self.size = [data[@"size"] integerValue];
         if(data[@"screenshot"] != [NSNull null])
             self.screenshotURL = [NSURL URLWithString:data[@"screenshot"]];
